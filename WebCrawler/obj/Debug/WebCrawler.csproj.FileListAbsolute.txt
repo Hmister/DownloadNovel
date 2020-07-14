@@ -1,0 +1,11 @@
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\WebCrawler.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\WebCrawler.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\Entity.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\HtmlAgilityPack.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\Entity.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\HtmlAgilityPack.xml
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.csprojAssemblyReference.cache
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.csproj.CopyComplete
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.pdb
