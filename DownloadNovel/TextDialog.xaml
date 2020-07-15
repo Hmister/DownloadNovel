@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="DownloadNovel.TextDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DownloadNovel"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d" 
+            Loaded="UserControl_Loaded">
+    <Grid>
+
+        <hc:Card MaxWidth="400" BorderThickness="0"  Margin="8">
+            <!--Card 的内容部分-->
+            <Border CornerRadius="4,4,0,0" Width="230" Height="280">
+                <Image x:Name="CImg" Source="{Binding Cover}" Stretch="Uniform" Margin="10"/>
+            </Border>
+            <!--Card 的尾部部分-->
+            <hc:Card.Footer>
+                <StackPanel Margin="10" Width="260">
+                    <!--Card 的一级内容-->
+                    <TextBlock x:Name="NovelName" TextWrapping="NoWrap"  Style="{DynamicResource TextBlockTitleBold}" TextTrimming="CharacterEllipsis" 
+                                       Text="{Binding Name}" 
+                                       HorizontalAlignment="Left"/>
+                    <!--Card 的二级内容-->
+                    <TextBlock x:Name="Introduction" TextWrapping="Wrap" Style="{DynamicResource TextBlockDefault}" TextTrimming="CharacterEllipsis" 
+                                       Text="描述信息" Margin="0,6,0,0"
+                                       HorizontalAlignment="Left"/>
+                </StackPanel>
+            </hc:Card.Footer>
+        </hc:Card>
+
+        <Button Width="22" Height="22" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"/>
+    </Grid>
+</UserControl>

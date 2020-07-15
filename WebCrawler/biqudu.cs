@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace WebCrawler
 {
     public class biqudu
     {
-        public static List<NovelList> GetSearchList(string Name = "凡人修仙传")
+        public static List<NovelList> GetSearchList(string Name = "凡人修仙传",string Path="")
         {
             List<NovelList> novelLists = new List<NovelList>();
             string url = "http://www.biqudu.tv/s.php?q=" + Name;
@@ -42,12 +43,27 @@ namespace WebCrawler
                 novelList.Status = List[5].InnerText;
                 novelList.NovelId = novelList.Url.Split('/')[3];
                 var idArr = novelList.NovelId.Split('_');
-                novelList.Cover = $"http://www.biqudu.tv/files/article/image/{idArr[0]}/{idArr[1]}/{idArr[1]}s.jpg";
-                // Console.WriteLine(Author);
+                string ImgUrl = $"http://www.biqudu.tv/files/article/image/{idArr[0]}/{idArr[1]}/{idArr[1]}s.jpg";
+                novelList.Cover = FileHelper.DownloadFileImg(ImgUrl, $"{idArr[1]}s.jpg", Path+ "Img/bqd/");
                 i++;
                 novelLists.Add(novelList);
             }
             return novelLists;
+        }
+
+        public static string GetIntroduction(string Url)
+        {
+            List<NovelList> novelLists = new List<NovelList>();
+            HtmlWeb web = new HtmlWeb();
+            web.OverrideEncoding = Encoding.GetEncoding("utf-8");
+            //从url中加载
+            HtmlDocument doc = web.Load(Url);
+            //获得title标签节点，其子标签下的所有节点也在其中
+            HtmlNode headNode = doc.DocumentNode.SelectSingleNode("//*[@id='intro']/p");
+            //获得title标签中的内容
+            string Introduction = headNode.InnerText;
+            Console.WriteLine(Introduction);
+            return Introduction;
         }
 
     }

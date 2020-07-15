@@ -7,22 +7,25 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DownloadNovel" Height="500" Width="850" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Margin="17,10,16,341">
             <controls:SearchBar x:Name="SName" controls:InfoElement.Placeholder="请输入书名或者作者进行搜索"  ShowClearButton="True" Style="{StaticResource SearchBarPlus}" Margin="0,20,409,0" SearchStarted="SName_SearchStarted"/>
         </StackPanel>
-        
-       
-
+        <!--<UniformGrid Rows="3" Columns="4" Margin="480,5,0,307" HorizontalAlignment="Left" Width="296">
+            <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="5" EndColumn="7" EndRow="5" IsPlaying="True" Margin="0,0,5,-55"/>
+            <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="7" EndColumn="7" EndRow="7" IsPlaying="True" Margin="0,0,5,-55"/>
+            <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="1" EndColumn="7" EndRow="1" IsPlaying="True" Margin="0,0,5,-55"/>
+            <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="0" EndColumn="7" EndRow="0" IsPlaying="True" Margin="0,0,5,-55" />
+        </UniformGrid>-->
         <TabControl Style="{StaticResource TabControlInLine}" Margin="0,83,0,0">
             <TabItem Header="搜索结果">
-                <DataGrid HeadersVisibility="All" RowHeaderWidth="60" AutoGenerateColumns="False" Name="NovelListData" ItemsSource="{Binding DataList}">
-                    <DataGrid.RowHeaderTemplate>
+                <DataGrid HeadersVisibility="All" RowHeaderWidth="60" AutoGenerateColumns="False" Name="NovelListData" ItemsSource="{Binding DataList}" hc:DataGridAttach.ShowRowNumber="True">
+                    <!--<DataGrid.RowHeaderTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                         </DataTemplate>
-                    </DataGrid.RowHeaderTemplate>
+                    </DataGrid.RowHeaderTemplate>-->
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="60" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
@@ -31,22 +34,30 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn IsReadOnly="True" Width="150" CanUserResize="False" Binding="{Binding Name}" Header="小说名"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="120" CanUserResize="False" Binding="{Binding Name}" Header="小说名"/>
                         <DataGridTextColumn Binding="{Binding Author}" Header="作者"/>
                         <DataGridTextColumn Width="180" CanUserResize="False"  Binding="{Binding LastChapter}" Header="最新章节"/>
                         <DataGridTextColumn  Width="80" CanUserResize="False" Binding="{Binding Number}" Header="字数"/>
                         <DataGridTextColumn  Width="100" CanUserResize="False" Binding="{Binding UpdateTime}" Header="更新时间"/>
                         <DataGridTextColumn Binding="{Binding Status}" Header="状态"/>
+                        <DataGridTemplateColumn Width="80" CanUserResize="False"  Header="操作">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<Button Margin="0,32,0,0" Content="详情" Command="{Binding ShowTextCmd}"/>-->
+                                    <Button Content="详情" Margin="5" Style="{StaticResource ButtonPrimary}" Click="Button_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
         </TabControl>
 
-   
-        
-        
+
+
+
         <!--消息框-->
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" Width="355" Margin="0,10,0,-10">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" Width="355" Margin="0,10,0,316">
             <StackPanel VerticalAlignment="Top" Margin="0,10,10,10" controls:Growl.Token="SuccessMsg" ></StackPanel>
         </ScrollViewer>
     </Grid>

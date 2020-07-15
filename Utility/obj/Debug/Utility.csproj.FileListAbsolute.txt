@@ -1,0 +1,5 @@
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\bin\Debug\Utility.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\bin\Debug\Utility.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.csprojAssemblyReference.cache
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.pdb

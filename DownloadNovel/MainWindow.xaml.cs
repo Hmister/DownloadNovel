@@ -1,21 +1,13 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Command;
 using HandyControl.Controls;
+using HandyControl.Tools.Extension;
 using HandyControl.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WebCrawler;
+using System.Data;
+using Entity;
 
 namespace DownloadNovel
 {
@@ -24,10 +16,10 @@ namespace DownloadNovel
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        string ProcedurePath = AppDomain.CurrentDomain.BaseDirectory;//获取程序所在路径
         public MainWindow()
         {
             InitializeComponent();
-            //
         }
 
 
@@ -50,20 +42,29 @@ namespace DownloadNovel
                 });
                 return;
             }
-            d =  Dialog.Show<ProgressDialog>();
-
+            d = Dialog.Show<ProgressDialog>();
             new Task(() => { Red(name); }).Start();
         }
 
         private void Red(string name)
         {
-            var list = biqudu.GetSearchList(name);
-          
+            var list = biqudu.GetSearchList(name, ProcedurePath);
             Dispatcher.Invoke(() =>
             {
                 d.Close();
                 NovelListData.ItemsSource = list;
             });
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            var a = this.NovelListData.SelectedItem;
+            var Info = (NovelList)a;
+            //Console.WriteLine(Info.Author);
+            Dialog.Show(new TextDialog(Info));
+
+        }
+
     }
 }

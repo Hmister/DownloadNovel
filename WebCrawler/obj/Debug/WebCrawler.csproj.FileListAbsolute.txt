@@ -9,3 +9,5 @@ C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCra
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.csproj.CopyComplete
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.dll
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\obj\Debug\WebCrawler.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\Utility.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\WebCrawler\bin\Debug\Utility.pdb
