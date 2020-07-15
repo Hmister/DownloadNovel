@@ -12,12 +12,12 @@
         <StackPanel Margin="17,10,16,341">
             <controls:SearchBar x:Name="SName" controls:InfoElement.Placeholder="请输入书名或者作者进行搜索"  ShowClearButton="True" Style="{StaticResource SearchBarPlus}" Margin="0,20,409,0" SearchStarted="SName_SearchStarted"/>
         </StackPanel>
-        <!--<UniformGrid Rows="3" Columns="4" Margin="480,5,0,307" HorizontalAlignment="Left" Width="296">
+        <UniformGrid Rows="3" Columns="4" Margin="480,5,0,388" HorizontalAlignment="Left" Width="296">
             <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="5" EndColumn="7" EndRow="5" IsPlaying="True" Margin="0,0,5,-55"/>
             <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="7" EndColumn="7" EndRow="7" IsPlaying="True" Margin="0,0,5,-55"/>
             <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="1" EndColumn="7" EndRow="1" IsPlaying="True" Margin="0,0,5,-55"/>
             <hc:ImageBlock Source="/DownloadNovel;component/Img/Dance.png" Interval="0:0:0.125" Columns="8" Rows="10" StartColumn="0" StartRow="0" EndColumn="7" EndRow="0" IsPlaying="True" Margin="0,0,5,-55" />
-        </UniformGrid>-->
+        </UniformGrid>
         <TabControl Style="{StaticResource TabControlInLine}" Margin="0,83,0,0">
             <TabItem Header="搜索结果">
                 <DataGrid HeadersVisibility="All" RowHeaderWidth="60" AutoGenerateColumns="False" Name="NovelListData" ItemsSource="{Binding DataList}" hc:DataGridAttach.ShowRowNumber="True">
