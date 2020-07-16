@@ -46,3 +46,5 @@ C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\bin\Debug\Uti
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\bin\Debug\Utility.pdb
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\TextDialog.g.cs
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\TextDialog.baml
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\Window1.g.cs
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\Window1.baml

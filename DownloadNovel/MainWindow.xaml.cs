@@ -8,6 +8,7 @@ using System.Windows;
 using WebCrawler;
 using System.Data;
 using Entity;
+using Utility;
 
 namespace DownloadNovel
 {
@@ -58,13 +59,50 @@ namespace DownloadNovel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+           
             var a = this.NovelListData.SelectedItem;
             var Info = (NovelList)a;
-            //Console.WriteLine(Info.Author);
-            Dialog.Show(new TextDialog(Info));
+            d = Dialog.Show<ProgressDialog>();
+            new Task(() => {
+                RedDetails(Info);
+            }).Start();
+           
 
         }
+        private void RedDetails(NovelList Info)
+        {
+            var list = GetDetails(Info) ;
+            Dispatcher.Invoke(() =>
+            {
+                d.Close();
+                Dialog.Show(new TextDialog(list));
+            });
+        }
+        private NovelDetails GetDetails(NovelList Info)
+        {
+            NovelDetails novelDetails = new NovelDetails();
+            novelDetails.Name = Info.Name;
+            novelDetails.NovelId = Info.NovelId;
+            novelDetails.Url = Info.Url;
+            novelDetails.Cover = Info.Cover;
+            novelDetails.Author = Info.Author;
+            var _introduction = biqudu.GetIntroduction(Info.Url);
+            string Content = _introduction.Trim();
+            Content = Content.Replace("&nbsp;", "");
+            novelDetails.Introduction = Content; 
+            return novelDetails;
+        }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string PathImg = ProcedurePath + "Img/";
+            string PathBook = ProcedurePath + "Book/";
+            FileHelper.CreateDir(PathImg);
+            FileHelper.CreateDir(PathBook);
+            FileHelper.DeleteDir(ProcedurePath + "Img/bqd/");
+            FileHelper.DeleteDir(ProcedurePath + "Book/");
+        }
+
+   
     }
 }

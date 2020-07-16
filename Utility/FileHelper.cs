@@ -41,7 +41,61 @@ namespace Utility
                 }
                 return Path + "nocover.jpg";
             }
+        }
 
+
+        public static bool DownloadFile(string Url, string fileName, string Path)
+        {
+            WebClient myWebClient = new WebClient();
+            try
+            {
+                CreateDir(Path);
+                if (!File.Exists(Path + fileName))
+                {
+                    myWebClient.DownloadFile(Url, Path + fileName);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 清空指定的文件夹，但不删除文件夹
+        /// </summary>
+        /// <param name="file"></param>
+        public static void DeleteDir(string file)
+        {
+            
+            //去除文件夹和子文件的只读属性
+         //去除文件夹的只读属性
+            System.IO.DirectoryInfo fileInfo = new DirectoryInfo(file);
+            fileInfo.Attributes = FileAttributes.Normal & FileAttributes.Directory;
+
+            //去除文件的只读属性
+            System.IO.File.SetAttributes(file, System.IO.FileAttributes.Normal);
+
+            //判断文件夹是否还存在
+            if (Directory.Exists(file))
+            {
+                foreach (string f in Directory.GetFileSystemEntries(file))
+                {
+                    if (File.Exists(f))
+                    {
+                        //如果有子文件删除文件
+                        File.Delete(f);
+                        Console.WriteLine(f);
+                    }
+                    else
+                    {
+                        //循环递归删除子文件夹
+                        DeleteDir(f);
+                    }
+                }
+                Console.WriteLine(file);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace WebCrawler
 {
     public class biqudu
     {
-        public static List<NovelList> GetSearchList(string Name = "凡人修仙传",string Path="")
+        public static List<NovelList> GetSearchList(string Name = "凡人修仙传", string Path = "")
         {
             List<NovelList> novelLists = new List<NovelList>();
             string url = "http://www.biqudu.tv/s.php?q=" + Name;
@@ -44,7 +44,7 @@ namespace WebCrawler
                 novelList.NovelId = novelList.Url.Split('/')[3];
                 var idArr = novelList.NovelId.Split('_');
                 string ImgUrl = $"http://www.biqudu.tv/files/article/image/{idArr[0]}/{idArr[1]}/{idArr[1]}s.jpg";
-                novelList.Cover = FileHelper.DownloadFileImg(ImgUrl, $"{idArr[1]}s.jpg", Path+ "Img/bqd/");
+                novelList.Cover = FileHelper.DownloadFileImg(ImgUrl, $"{idArr[1]}s.jpg", Path + "Img/bqd/");
                 i++;
                 novelLists.Add(novelList);
             }
@@ -64,6 +64,11 @@ namespace WebCrawler
             string Introduction = headNode.InnerText;
             Console.WriteLine(Introduction);
             return Introduction;
+        }
+
+        public static bool Download(string Url, string Name, string Path)
+        {
+            return FileHelper.DownloadFile(Url, Name, Path);
         }
 
     }

@@ -7,7 +7,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
         mc:Ignorable="d"
-        Title="DownloadNovel" Height="500" Width="850" ResizeMode="CanMinimize">
+        Title="DownloadNovel" Height="500" Width="850" ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Grid>
         <StackPanel Margin="17,10,16,341">
             <controls:SearchBar x:Name="SName" controls:InfoElement.Placeholder="请输入书名或者作者进行搜索"  ShowClearButton="True" Style="{StaticResource SearchBarPlus}" Margin="0,20,409,0" SearchStarted="SName_SearchStarted"/>
@@ -36,7 +36,7 @@
                         </DataGridTemplateColumn>
                         <DataGridTextColumn IsReadOnly="True" Width="120" CanUserResize="False" Binding="{Binding Name}" Header="小说名"/>
                         <DataGridTextColumn Binding="{Binding Author}" Header="作者"/>
-                        <DataGridTextColumn Width="180" CanUserResize="False"  Binding="{Binding LastChapter}" Header="最新章节"/>
+                        <DataGridTextColumn Width="170" CanUserResize="False"  Binding="{Binding LastChapter}" Header="最新章节"/>
                         <DataGridTextColumn  Width="80" CanUserResize="False" Binding="{Binding Number}" Header="字数"/>
                         <DataGridTextColumn  Width="100" CanUserResize="False" Binding="{Binding UpdateTime}" Header="更新时间"/>
                         <DataGridTextColumn Binding="{Binding Status}" Header="状态"/>

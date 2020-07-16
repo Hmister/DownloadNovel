@@ -76,6 +76,9 @@
     <Compile Include="TextDialog.xaml.cs">
       <DependentUpon>TextDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TextDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +138,10 @@
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{9867AC50-90D4-49C3-B05A-D5E7F47027C8}</Project>
       <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{23EBFFE2-107C-4392-9D53-3F1E328CC6C5}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebCrawler\WebCrawler.csproj">
       <Project>{78014AAB-DBF1-4778-B047-88C04BAB209F}</Project>

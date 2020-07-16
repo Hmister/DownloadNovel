@@ -5,30 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DownloadNovel"
              xmlns:hc="https://handyorg.github.io/handycontrol"
+              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
              mc:Ignorable="d" 
             Loaded="UserControl_Loaded">
     <Grid>
-
-        <hc:Card MaxWidth="400" BorderThickness="0"  Margin="8">
-            <!--Card 的内容部分-->
-            <Border CornerRadius="4,4,0,0" Width="230" Height="280">
-                <Image x:Name="CImg" Source="{Binding Cover}" Stretch="Uniform" Margin="10"/>
+        <StackPanel Margin="10">
+            <Border  Width="480" Height="340" Margin="20">
+                <Border Background="White" Margin="0,10,0,10">
+                    <hc:Row Margin="0,10,0,0">
+                        <hc:Col Span="12" Margin="10,0,0,0">
+                            <Border Background="{DynamicResource BorderBrush}" CornerRadius="4" Margin="10,10,0,10" HorizontalAlignment="Left" Width="209">
+                                <Image x:Name="CImg" Source="{Binding Cover}" Stretch="Uniform" Margin="0,10,10,10" HorizontalAlignment="Right" Width="189"/>
+                            </Border>
+                        </hc:Col>
+                        <hc:Col Span="12">
+                            <Border Background="{DynamicResource BorderBrush}" CornerRadius="4" Margin="0,10,10,10">
+                                <StackPanel Background="White" Margin="10" MaxWidth="210">
+                                    <TextBlock HorizontalAlignment="Left" Margin="10" Text="{Binding Name}" Style="{StaticResource TextBlockTitleBold}"/>
+                                    <TextBlock HorizontalAlignment="Left" Name="Author" Margin="10,0,0,0" Text="作者：" Style="{StaticResource TextBlockSubTitle}" />
+                                    <ScrollViewer  MaxWidth="210" Height="135">
+                                        <TextBlock HorizontalAlignment="Left" Name="Introduction" Margin="10,10,0,0" Text="简介：" TextWrapping="Wrap" Style="{StaticResource TextBlockDefault}"/>
+                                    </ScrollViewer>
+                                    <ToggleButton Name="Btn"  Style="{StaticResource ToggleButtonLoadingPrimary}" IsChecked="{Binding IsUploading,Mode=TwoWay}" Content="下载" Width="180" Margin="10" Checked="Button_Click"/>
+                                </StackPanel>
+                            </Border>
+                        </hc:Col>
+                    </hc:Row>
+                </Border>
             </Border>
-            <!--Card 的尾部部分-->
-            <hc:Card.Footer>
-                <StackPanel Margin="10" Width="260">
-                    <!--Card 的一级内容-->
-                    <TextBlock x:Name="NovelName" TextWrapping="NoWrap"  Style="{DynamicResource TextBlockTitleBold}" TextTrimming="CharacterEllipsis" 
-                                       Text="{Binding Name}" 
-                                       HorizontalAlignment="Left"/>
-                    <!--Card 的二级内容-->
-                    <TextBlock x:Name="Introduction" TextWrapping="Wrap" Style="{DynamicResource TextBlockDefault}" TextTrimming="CharacterEllipsis" 
-                                       Text="描述信息" Margin="0,6,0,0"
-                                       HorizontalAlignment="Left"/>
-                </StackPanel>
-            </hc:Card.Footer>
-        </hc:Card>
-
+        </StackPanel>
+        
         <Button Width="22" Height="22" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"/>
+        <!--消息框-->
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" Width="355" Margin="0,61,10,215">
+            <StackPanel VerticalAlignment="Top" Margin="0,0,10,10" controls:Growl.Token="InfoMsg" ></StackPanel>
+        </ScrollViewer>
+       
     </Grid>
 </UserControl>
