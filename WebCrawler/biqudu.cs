@@ -12,6 +12,12 @@ namespace WebCrawler
 {
     public class biqudu
     {
+        /// <summary>
+        /// 搜索
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="Path"></param>
+        /// <returns></returns>
         public static List<NovelList> GetSearchList(string Name = "凡人修仙传", string Path = "")
         {
             List<NovelList> novelLists = new List<NovelList>();
@@ -41,7 +47,7 @@ namespace WebCrawler
                     novelList.NovelId = novelList.Url.Split('/')[3];
                     var idArr = novelList.NovelId.Split('_');
                     string ImgUrl = $"http://www.biqudu.tv/files/article/image/{idArr[0]}/{idArr[1]}/{idArr[1]}s.jpg";
-                    novelList.Cover = FileHelper.DownloadFileImg(ImgUrl, $"{idArr[1]}s.jpg", Path + "Img/bqd/");
+                    novelList.Cover = DownloadFileImg(ImgUrl, $"{idArr[1]}s.jpg", Path + "Img/bqd/");
                     i++;
                     novelLists.Add(novelList);
                 }
@@ -51,9 +57,14 @@ namespace WebCrawler
             {
                 return novelLists;
             }
-        
+
         }
 
+        /// <summary>
+        /// 获取简介
+        /// </summary>
+        /// <param name="Url"></param>
+        /// <returns></returns>
         public static string GetIntroduction(string Url)
         {
             List<NovelList> novelLists = new List<NovelList>();
@@ -69,6 +80,42 @@ namespace WebCrawler
             return Introduction;
         }
 
+        /// <summary>
+        /// 下载网络图片到本地
+        /// </summary>
+        /// <param name="UrlIng"></param>
+        /// <param name="FileName"></param>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        public static string DownloadFileImg(string UrlIng, string FileName, string Path)
+        {
+            string PathImg = Path + FileName;
+            if (FileHelper.IsFileExist(PathImg))
+                return PathImg;
+
+            bool Status = FileHelper.DownloadFile(UrlIng, FileName, Path);
+            if (Status)
+            {
+                return PathImg;
+            }
+            else
+            {
+                if (FileHelper.IsFileExist(Path + "nocover.jpg"))
+                    return Path + "nocover.jpg";
+
+                string StrUrl = "http://www.biqudu.tv/modules/article/images/nocover.jpg";
+                FileHelper.DownloadFile(StrUrl, "nocover.jpg", Path);
+                return Path + "nocover.jpg";
+            }
+        }
+
+        /// <summary>
+        /// 下载文件
+        /// </summary>
+        /// <param name="Url">网络地址</param>
+        /// <param name="Name">名称</param>
+        /// <param name="Path">需要存储的路径</param>
+        /// <returns></returns>
         public static bool Download(string Url, string Name, string Path)
         {
             return FileHelper.DownloadFile(Url, Name, Path);

@@ -48,3 +48,5 @@ C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\Tex
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\TextDialog.baml
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\Window1.g.cs
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\obj\Debug\Window1.baml
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\DownloadNovel\bin\Debug\Newtonsoft.Json.xml

@@ -71,15 +71,27 @@ namespace DownloadNovel
                 {
                     Btn.IsEnabled = true;
                     Btn.IsChecked = false;
-                    Growl.Ask("下载成功,是否打开文件夹？", isConfirmed =>
+                    if (status)
                     {
-                        if (isConfirmed)
+                        Growl.Ask("下载成功,是否打开文件夹？", isConfirmed =>
                         {
-                            //打开文件夹
-                            System.Diagnostics.Process.Start(ProcedurePath + "Book/");
-                        }
-                        return true;
-                    }, "InfoMsg");
+                            if (isConfirmed)
+                            {
+                                //打开文件夹
+                                System.Diagnostics.Process.Start(ProcedurePath + "Book/");
+                            }
+                            return true;
+                        }, "InfoMsg");
+                    }
+                    else
+                    {
+                        Growl.Error(new GrowlInfo
+                        {
+                            Message = "很遗憾，你的网络太差了，失败了！",
+                            WaitTime = 3,
+                            Token = "InfoMsg"
+                        });
+                    }
                 });
 
             }).Start();

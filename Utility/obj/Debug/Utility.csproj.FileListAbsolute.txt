@@ -3,3 +3,6 @@ C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\bin\Debug\Utility.p
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.csprojAssemblyReference.cache
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.dll
 C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.pdb
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\bin\Debug\Newtonsoft.Json.dll
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\bin\Debug\Newtonsoft.Json.xml
+C:\Users\huoshen\Desktop\DownloadNovel\DownloadNovel\Utility\obj\Debug\Utility.csproj.CopyComplete
