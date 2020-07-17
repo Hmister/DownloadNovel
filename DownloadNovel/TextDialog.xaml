@@ -23,10 +23,16 @@
                                 <StackPanel Background="White" Margin="10" MaxWidth="210">
                                     <TextBlock HorizontalAlignment="Left" Margin="10" Text="{Binding Name}" Style="{StaticResource TextBlockTitleBold}"/>
                                     <TextBlock HorizontalAlignment="Left" Name="Author" Margin="10,0,0,0" Text="作者：" Style="{StaticResource TextBlockSubTitle}" />
-                                    <ScrollViewer  MaxWidth="210" Height="135">
+                                    <ScrollViewer  MaxWidth="210" Height="147">
                                         <TextBlock HorizontalAlignment="Left" Name="Introduction" Margin="10,10,0,0" Text="简介：" TextWrapping="Wrap" Style="{StaticResource TextBlockDefault}"/>
                                     </ScrollViewer>
-                                    <ToggleButton Name="Btn"  Style="{StaticResource ToggleButtonLoadingPrimary}" IsChecked="{Binding IsUploading,Mode=TwoWay}" Content="下载" Width="180" Margin="10" Checked="Button_Click"/>
+
+
+                                    <UniformGrid Margin="10,10,10,65" Rows="1" Columns="2" Width="190">
+                                        <Button Content="阅读"  Width="75" Style="{StaticResource ButtonSuccess}" Click="Button_Click_1"/>
+                                        <ToggleButton Content="下载" Width="75"  Name="Btn"  Style="{StaticResource ToggleButtonLoadingPrimary}" IsChecked="{Binding IsUploading,Mode=TwoWay}"  Checked="Button_Click"/>
+                                    </UniformGrid>
+                                    
                                 </StackPanel>
                             </Border>
                         </hc:Col>
@@ -34,12 +40,12 @@
                 </Border>
             </Border>
         </StackPanel>
-        
+
         <Button Width="22" Height="22" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"/>
         <!--消息框-->
         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" Width="355" Margin="0,61,10,215">
             <StackPanel VerticalAlignment="Top" Margin="0,0,10,10" controls:Growl.Token="InfoMsg" ></StackPanel>
         </ScrollViewer>
-       
+
     </Grid>
 </UserControl>

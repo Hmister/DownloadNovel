@@ -8,15 +8,17 @@
         xmlns:extension="clr-namespace:HandyControl.Tools.Extension;assembly=HandyControl"
         xmlns:data="clr-namespace:HandyControl.Data;assembly=HandyControl"
         mc:Ignorable="d"
-        Title="Window1" Height="500" Width="580">
-    <StackPanel Margin="20">
-
-        <DockPanel Margin="0,16,0,0" LastChildFill="True">
-            <Button Command="{Binding SendNotificationCmd}" Content="发送" DockPanel.Dock="Right" HorizontalAlignment="Stretch" Margin="10,0,0,0" Click="Button_Click"/>
-            <TextBox Text="{Binding Content}"/>
-        </DockPanel>
-        <hc:NotifyIcon Token="mess" Text="HandyControl" IsBlink="{Binding ContextMenuIsBlink}" Visibility="{Binding ContextMenuIsShow,Converter={StaticResource Boolean2VisibilityConverter}}">
-          
-        </hc:NotifyIcon>
-    </StackPanel>
+        Title="Window1" Height="800" Width="580">
+    <FlowDocumentScrollViewer IsToolBarVisible="True" Width="502" Height="400" Margin="32">
+        <FlowDocument ColumnWidth="400" IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
+            <Section FontSize="12">
+                <Paragraph Name="nr">
+                    等待加载。。。
+                </Paragraph>
+                <Paragraph>
+                    Tips：请使用键盘左右键进行翻页~
+                </Paragraph>
+            </Section>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
 </Window>

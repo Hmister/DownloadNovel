@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WebCrawler;
+using HandyControl.Tools;
 
 namespace DownloadNovel
 {
@@ -97,7 +98,16 @@ namespace DownloadNovel
             }).Start();
         }
 
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenWindow("ReadOnline");
+        }
+        private void OpenWindow(string windowTag)
+        {
+            ReadOnline window = new ReadOnline();
+            //window.Owner = Application.Current.MainWindow;
+            window.ShowDialog();
+        }
 
     }
 }

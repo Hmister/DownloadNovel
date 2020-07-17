@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WebCrawler;
 
 namespace DownloadNovel
 {
@@ -27,12 +28,15 @@ namespace DownloadNovel
            new RelayCommand(SendNotification)).Value;
 
         private bool _contextMenuIsShow;
-  
+
         private readonly DispatcherTimer _timer;
         public Window1()
         {
             InitializeComponent();
-            DataContext = this;
+
+            var Nrs = biqudu.GetContent();
+            nr.Inlines.Clear();
+            nr.Inlines.Add(new Run(Nrs.Content));
 
         }
         private void SendNotification()

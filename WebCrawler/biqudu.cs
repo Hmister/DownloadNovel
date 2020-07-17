@@ -121,5 +121,35 @@ namespace WebCrawler
             return FileHelper.DownloadFile(Url, Name, Path);
         }
 
+
+        public static ChapterInfo GetContent(string Url = "http://www.biqudu.tv/15_15998/9600071.html")
+        {
+            ChapterInfo chapterInfo = new ChapterInfo();
+            try
+            {
+                HtmlWeb web = new HtmlWeb();
+                web.OverrideEncoding = Encoding.GetEncoding("utf-8");
+                //从url中加载
+                HtmlDocument doc = web.Load(Url);
+                HtmlNode node = doc.DocumentNode.SelectSingleNode("//*[@id='content']");     //根据XPath查找节点，跟XmlNode差不多
+                string chapterName = "/html/body/div[@id='wrapper']/div[@class='content_read']/div[@class='box_con']/div[@class='bookname']/h1";
+                string Last = "/html/body/div[@id='wrapper']/div[@class='content_read']/div[@class='box_con']/div[@class='bookname']/div[@class='bottem1']/a[4]";
+                string Previous = "/html/body/div[@id='wrapper']/div[@class='content_read']/div[@class='box_con']/div[@class='bookname']/div[@class='bottem1']/a[2]";
+                chapterInfo.Content = node.InnerText.Trim().Replace("\r\n", "").Replace("&nbsp;", " ");
+                HtmlNode nodes = doc.DocumentNode.SelectSingleNode(chapterName);     //根据XPath查找节点，跟XmlNode差不多
+                chapterInfo.Name = nodes.InnerText;
+                HtmlNode nodeLast = doc.DocumentNode.SelectSingleNode(Last);     //根据XPath查找节点，跟XmlNode差不多
+                chapterInfo.LastUrl = "http://www.biqudu.tv" + nodeLast.Attributes["href"].Value;
+                HtmlNode nodePrevious = doc.DocumentNode.SelectSingleNode(Previous);     //根据XPath查找节点，跟XmlNode差不多
+                chapterInfo.PreviousUrl = "http://www.biqudu.tv" + nodePrevious.Attributes["href"].Value;
+                return chapterInfo;
+            }
+            catch (Exception)
+            {
+                return chapterInfo;
+            }
+
+        }
+
     }
 }

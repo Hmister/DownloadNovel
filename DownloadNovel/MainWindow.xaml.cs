@@ -108,8 +108,8 @@ namespace DownloadNovel
         {
             string PathImg = ProcedurePath + "Img/";
             string PathBook = ProcedurePath + "Book/";
-            FileHelper.CreateDir(PathImg);
-            FileHelper.CreateDir(PathBook);
+            FileHelper.IsFileCreateDir(PathImg);
+            FileHelper.IsFileCreateDir(PathBook);
             FileHelper.DeleteDir(ProcedurePath + "Img/bqd/");
             FileHelper.DeleteDir(ProcedurePath + "Book/");
        
