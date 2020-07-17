@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using HandyControl.Controls;
+using HandyControl.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,52 +21,27 @@ namespace DownloadNovel
     /// <summary>
     /// Window1.xaml 的交互逻辑
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1 : System.Windows.Window
     {
+        public RelayCommand SendNotificationCmd => new Lazy<RelayCommand>(() =>
+           new RelayCommand(SendNotification)).Value;
 
-        public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register(
-            "Progress", typeof(int), typeof(Window1), new PropertyMetadata(default(int)));
-
-        public int Progress
-        {
-            get => (int)GetValue(ProgressProperty);
-            set => SetValue(ProgressProperty, value);
-        }
-
-        public static readonly DependencyProperty IsUploadingProperty = DependencyProperty.Register(
-            "IsUploading", typeof(bool), typeof(Window1), new PropertyMetadata(default(bool)));
-
-        public bool IsUploading
-        {
-            get => (bool)GetValue(IsUploadingProperty);
-            set => SetValue(IsUploadingProperty, value);
-        }
-
+        private bool _contextMenuIsShow;
+  
         private readonly DispatcherTimer _timer;
         public Window1()
         {
             InitializeComponent();
             DataContext = this;
 
-            _timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(200)
-            };
-            _timer.Tick += Timer_Tick;
         }
-        private void Timer_Tick(object sender, EventArgs e)
+        private void SendNotification()
         {
-            Progress++;
-            if (Progress == 100)
-            {
-                Progress = 0;
-                _timer.Stop();
-                IsUploading = false;
-            }
         }
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //IsUploading = true;
+            NotifyIcon.ShowBalloonTip("DownloadNovel", "来了，老弟儿~", NotifyIconInfoType.None, "mess");
         }
     }
 }

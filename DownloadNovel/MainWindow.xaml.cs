@@ -21,12 +21,14 @@ namespace DownloadNovel
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
 
         Dialog d = null;
         private void SName_SearchStarted(object sender, FunctionEventArgs<string> e)
         {
+           
             string name = SName.Text;
             if (string.IsNullOrEmpty(name) || name == "")
             {
@@ -53,6 +55,15 @@ namespace DownloadNovel
             Dispatcher.Invoke(() =>
             {
                 d.Close();
+                if (list.Count==0)
+                {
+                    Growl.Error(new GrowlInfo
+                    {
+                        Message = "骚年，没有搜索到你想要的结果！",
+                        WaitTime = 3,
+                        Token = "SuccessMsg"
+                    });
+                }
                 NovelListData.ItemsSource = list;
             });
         }
@@ -101,6 +112,7 @@ namespace DownloadNovel
             FileHelper.CreateDir(PathBook);
             FileHelper.DeleteDir(ProcedurePath + "Img/bqd/");
             FileHelper.DeleteDir(ProcedurePath + "Book/");
+       
         }
 
    

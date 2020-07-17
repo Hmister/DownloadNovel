@@ -6,12 +6,17 @@
         xmlns:local="clr-namespace:DownloadNovel"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:extension="clr-namespace:HandyControl.Tools.Extension;assembly=HandyControl"
+        xmlns:data="clr-namespace:HandyControl.Data;assembly=HandyControl"
         mc:Ignorable="d"
         Title="Window1" Height="500" Width="580">
     <StackPanel Margin="20">
 
-        <ToggleButton  Style="{StaticResource ToggleButtonLoadingPrimary}" IsChecked="{Binding IsUploading,Mode=TwoWay}" Content="下载" Width="180" Margin="5" Checked="ToggleButton_Checked"/>
-
-
+        <DockPanel Margin="0,16,0,0" LastChildFill="True">
+            <Button Command="{Binding SendNotificationCmd}" Content="发送" DockPanel.Dock="Right" HorizontalAlignment="Stretch" Margin="10,0,0,0" Click="Button_Click"/>
+            <TextBox Text="{Binding Content}"/>
+        </DockPanel>
+        <hc:NotifyIcon Token="mess" Text="HandyControl" IsBlink="{Binding ContextMenuIsBlink}" Visibility="{Binding ContextMenuIsShow,Converter={StaticResource Boolean2VisibilityConverter}}">
+          
+        </hc:NotifyIcon>
     </StackPanel>
 </Window>
